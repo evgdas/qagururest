@@ -47,6 +47,9 @@ tasks.withType(Test) {
 compileJava {
     options.encoding = 'UTF-8'
 }
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 allure {
     autoconfigure = true

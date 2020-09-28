@@ -1,13 +1,20 @@
 package api.reqres;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import model.ListUsers;
 import model.UserCreate;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+@Owner("evgdas")
+@Feature("Работа с API reqres.in")
+@Tag("api")
 public class Tests {
     static ReqresStepsRestAssured reqresStepsRestAssured;
     static ReqresStepsRetrofit reqresStepsRetrofit;
@@ -19,7 +26,8 @@ public class Tests {
     }
 
     @Test
-    public void isNotNullUsersPropertysWithRestAssured() {
+    @DisplayName("Проверка списка пользователей на пустые поля RestAssured")
+     public void isNotNullUsersPropertysWithRestAssured() {
         ListUsers listUsers = reqresStepsRestAssured.getAllListUsers();
 
         assertThat(listUsers.getData(), everyItem(hasProperty("id", is(notNullValue()))));
@@ -29,6 +37,7 @@ public class Tests {
     }
 
     @Test
+    @DisplayName("Создание нового пользователя RestAssured")
     public void isNewUserCreatedWithRestAssured() {
         UserCreate newUser = reqresStepsRestAssured.createUser();
 
@@ -39,6 +48,7 @@ public class Tests {
     }
 
     @Test
+    @DisplayName("Проверка списка пользователей на пустые поля Retrofit")
     public void isNotNullUsersPropertysWithRetrofit() {
         ListUsers listUsers = reqresStepsRetrofit.getAllListUsers();
 
@@ -49,6 +59,7 @@ public class Tests {
     }
 
     @Test
+    @DisplayName("Создание нового пользователя Retrofit")
     public void isNewUserCreatedWithRetrofit() {
         UserCreate newUser = reqresStepsRetrofit.createUser();
 
