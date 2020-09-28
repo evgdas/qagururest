@@ -1,7 +1,7 @@
 package api.reqres;
 
 import model.ListUsers;
-import org.hamcrest.MatcherAssert;
+import model.UserCreate;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -25,5 +25,14 @@ public class Tests {
         assertThat(listUsers.getData(), everyItem(hasProperty("email", is(notNullValue()))));
         assertThat(listUsers.getData(), everyItem(hasProperty("first_name", is(notNullValue()))));
         assertThat(listUsers.getData(), everyItem(hasProperty("last_name", is(notNullValue()))));
+    }
+    @Test
+    public void isNewUserCreated(){
+       UserCreate newUser =reqresSteps.createUser();
+
+        assertThat(newUser.getId(), is(notNullValue()));
+        assertThat(newUser.getName(), is(notNullValue()));
+        assertThat(newUser.getJob(), is(notNullValue()));
+        assertThat(newUser.getCreatedAt(), is(notNullValue()));
     }
 }
