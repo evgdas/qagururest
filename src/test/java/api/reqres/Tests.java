@@ -2,6 +2,8 @@ package api.reqres;
 
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import model.ListUsers;
 import model.UserCreate;
 import org.junit.jupiter.api.BeforeAll;
@@ -68,4 +70,11 @@ public class Tests {
         assertThat(newUser.getJob(), is(notNullValue()));
         assertThat(newUser.getCreatedAt(), is(notNullValue()));
     }
+    @Test
+    @DisplayName("Удаление пользователя RestAssured")
+    public void isDeleteUser() {
+        Response response = reqresStepsRestAssured.deleteUser();
+
+        assertThat(response.getStatusCode(),is(equalTo(Integer.parseInt("204"))));
+       }
 }

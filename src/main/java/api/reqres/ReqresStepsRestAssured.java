@@ -1,6 +1,8 @@
 package api.reqres;
 
 import io.qameta.allure.Step;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import model.ListUsers;
 import model.UserCreate;
 
@@ -43,4 +45,15 @@ public class ReqresStepsRestAssured {
                         .as(UserCreate.class);
         // @formatter:on
     }
+
+    @Step("Удаление пользователя")
+    public Response deleteUser() {
+        // @formatter:off
+        return
+                given().spec(spec().request())
+                .when()
+                        .delete("api/users/2");
+        // @formatter:on
+    }
+
 }
