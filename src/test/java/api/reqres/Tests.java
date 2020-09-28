@@ -16,6 +16,7 @@ public class Tests {
         reqresSteps = new ReqresSteps();
 
     }
+
     @Test
     public void isNotNullUsersPropertys(){
         ListUsers listUsers=reqresSteps.getListUsers();
