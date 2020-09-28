@@ -7,7 +7,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import static filter.RetrofitFilter.reportingHelper;
 
-
 public class RetrofitClient {
     private static class Client {
         private static final RetrofitClient client = new RetrofitClient();
@@ -31,6 +30,17 @@ public class RetrofitClient {
                     .newBuilder()
                     .header("Authorization",
                             "token " + token)
+                    .build();
+            return chain.proceed(request);
+        }).build();
+
+        return create(baseUrl, client);
+    }
+
+    public Retrofit withoutAuth(final String baseUrl) {
+        OkHttpClient client = commonClient().addInterceptor(chain -> {
+            final Request request = chain.request()
+                    .newBuilder()
                     .build();
             return chain.proceed(request);
         }).build();

@@ -1,4 +1,4 @@
-package specification;
+package specificationrestassured;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;

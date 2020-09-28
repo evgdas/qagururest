@@ -1,16 +1,15 @@
 package api.reqres;
 
 import io.qameta.allure.Step;
-import io.restassured.http.ContentType;
 import model.ListUsers;
 import model.UserCreate;
 
 import static io.restassured.RestAssured.given;
-import static specification.CustomSpec.spec;
+import static specificationrestassured.CustomSpec.spec;
 
-public class ReqresSteps {
-    @Step("Получение списка пользователей")
-    public ListUsers getListUsers() {
+public class ReqresStepsRestAssured {
+    @Step("Получение списка пользователей RestAssured")
+    public ListUsers getAllListUsers() {
         // @formatter:off
         return
                 given().spec(spec().request())
@@ -25,7 +24,7 @@ public class ReqresSteps {
         // @formatter:on
     }
 
-    @Step("Создание нового пользователя")
+    @Step("Создание нового пользователя RestAssured")
     public UserCreate createUser() {
         String userData = "{\n" +
                 "    \"name\": \"morpheus\",\n" +
