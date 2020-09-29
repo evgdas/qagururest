@@ -55,5 +55,4 @@ public class ReqresStepsRestAssured {
                         .delete("api/users/2");
         // @formatter:on
     }
-
 }
