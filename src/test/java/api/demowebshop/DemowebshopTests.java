@@ -33,11 +33,11 @@ public class DemowebshopTests {
     @Test
     @DisplayName("Удаление одного товара из корзины")
     public void removeItemFromCart() {
-        //uodate cart, return response with items in cart
+        //update cart, return response with items in cart
         Response response = demowebshopSteps.updateCart("");
         //parse html response for find item ID
         String itemId = response.htmlPath().getString("**.find{it.@name=='removefromcart'}.@value");
-        response = demowebshopSteps.updateCart(itemId);
-        assertThat(response.getStatusCode(),is(Integer.parseInt("200")));
+        response = demowebshopSteps.updateCart(itemId); //response spec include check statusCode==200
+      //  assertThat(response.getStatusCode(),is(Integer.parseInt("200")));
     }
 }
