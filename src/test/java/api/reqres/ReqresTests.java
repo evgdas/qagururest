@@ -3,7 +3,6 @@ package api.reqres;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import model.ListUsers;
 import model.UserCreate;
 import org.junit.jupiter.api.BeforeAll;
@@ -17,7 +16,7 @@ import static org.hamcrest.Matchers.*;
 @Owner("evgdas")
 @Feature("Работа с API reqres.in")
 @Tag("api")
-public class Tests {
+public class ReqresTests {
     static ReqresStepsRestAssured reqresStepsRestAssured;
     static ReqresStepsRetrofit reqresStepsRetrofit;
 
